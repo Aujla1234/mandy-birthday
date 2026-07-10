@@ -1011,7 +1011,67 @@ BROTHER PROMISE
 
     <script src="script.js"></script>
     
- 
+
+
+
+
+
+
+
+    <!-- The hidden Audio Element -->
+<audio id="bgMusic" loop>
+  <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+<!-- The Welcome Overlay -->
+<div id="welcomeScreen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#111; color:#fff; display:flex; flex-direction:column; justify-content:center; align-items:center; z-index:99999;">
+  <h2>Welcome to the Website!</h2>
+  <button id="enterBtn" style="padding: 10px 20px; font-size: 18px; cursor: pointer; margin-top: 15px;">Enter Site</button>
+</div>
+
+<!-- Your Toggle Button -->
+<button id="musicBtn">
+  <i class="fa-solid fa-music"></i>
+</button>
+
+<script>
+  // Wrap everything in an emergency safety check
+  try {
+    const music = document.getElementById('bgMusic');
+    const welcomeScreen = document.getElementById('welcomeScreen');
+    const enterBtn = document.getElementById('enterBtn');
+    const musicBtn = document.getElementById('musicBtn');
+
+    // Handle entering the website
+    enterBtn.addEventListener('click', function() {
+      // Rule 1: Always hide the screen instantly so you never get locked out
+      welcomeScreen.style.display = 'none';
+
+      // Rule 2: Try to play the music safely
+      if (music) {
+        music.play().catch(function(error) {
+          console.log("Audio couldn't play, but website is unlocked:", error);
+        });
+      }
+    });
+
+    // Handle the play/pause button
+    musicBtn.addEventListener('click', function() {
+      if (music) {
+        if (music.paused) {
+          music.play();
+        } else {
+          music.pause();
+        }
+      }
+    });
+
+  } catch (globalError) {
+    // Ultimate Emergency Fallback: If JavaScript breaks completely, remove the barrier
+    console.error("Critical script error, forcing unlock:", globalError);
+    document.getElementById('welcomeScreen').style.display = 'none';
+  }
+</script>
 
  
 
