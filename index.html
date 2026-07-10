@@ -1012,7 +1012,20 @@ BROTHER PROMISE
     
     <script src="script.js"></script>
     
-    
+    <script>
+  const music = document.getElementById('bgMusic');
+  const button = document.getElementById('musicBtn');
+
+  button.addEventListener('click', () => {
+    if (music.paused) {
+      music.play();
+      button.style.color = "green"; // Optional: Visual cue when playing
+    } else {
+      music.pause();
+      button.style.color = "black"; // Optional: Visual cue when paused
+    }
+  });
+</script>
     
     </body>
     
