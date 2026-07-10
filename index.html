@@ -1023,52 +1023,7 @@ BROTHER PROMISE
   <source src="birthday.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Your Toggle Button -->
-<button id="musicBtn">
-  <i class="fa-solid fa-music"></i>
-</button>
-
-<script>
-  // Wrap everything in an emergency safety check
-  try {
-    const music = document.getElementById('bgMusic');
-    const welcomeScreen = document.getElementById('welcomeScreen');
-    const enterBtn = document.getElementById('enterBtn');
-    const musicBtn = document.getElementById('musicBtn');
-
-    // Handle entering the website
-    enterBtn.addEventListener('click', function() {
-      // Rule 1: Always hide the screen instantly so you never get locked out
-      welcomeScreen.style.display = 'none';
-
-      // Rule 2: Try to play the music safely
-      if (music) {
-        music.play().catch(function(error) {
-          console.log("Audio couldn't play, but website is unlocked:", error);
-        });
-      }
-    });
-
-    // Handle the play/pause button
-    musicBtn.addEventListener('click', function() {
-      if (music) {
-        if (music.paused) {
-          music.play();
-        } else {
-          music.pause();
-        }
-      }
-    });
-
-  } catch (globalError) {
-    // Ultimate Emergency Fallback: If JavaScript breaks completely, remove the barrier
-    console.error("Critical script error, forcing unlock:", globalError);
-    document.getElementById('welcomeScreen').style.display = 'none';
-  }
-</script>
-
- 
-
+  
 
 
    
